@@ -5,7 +5,7 @@ import { rating, reportLines } from './ch6/6-2';
 import { price } from './ch6/6-3-1';
 import { Order } from './ch6/6-3-2';
 import { isDeliveryFree } from './ch6/6-4';
-import { circum } from './ch6/6-5-1';
+import { circumference } from './ch6/6-5-1';
 import Book from './ch6/6-5-2';
 import { getDefaultOwner } from './ch6/6-6';
 import { readingsOutsideRange } from './ch6/6-8';
@@ -36,7 +36,7 @@ function main(): void {
   console.log('6-4. true:', isDeliveryFree({ basePrice: 1001 }));
 
   // 6-5 예제 1
-  console.log('6-5. 62.83185307179586:', circum(10));
+  console.log('6-5. 62.83185307179586:', circumference(10));
 
   // 6-5 예제 2
   const book: Book = new Book();
