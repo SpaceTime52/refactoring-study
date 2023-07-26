@@ -48,7 +48,10 @@ function main(): void {
   console.log('6-6. { firstName: 마틴, lastName: 파울러 }:', getDefaultOwner());
 
   // 6-8
-  console.log('6-8. []:', readingsOutsideRange({ name: 'Bohyeon', readings: [{ temp: 10, time: '10' }] }, 0, 100));
+  console.log(
+    '6-8. []:',
+    readingsOutsideRange({ name: 'Bohyeon', readings: [{ temp: 10, time: '10' }] }, { temperatureFloor: 0, temperatureCeiling: 100 }),
+  );
 
   // 6-9
   console.log('6-9. 0.2:', calculateBaseCharge({ customer: 'Bohyeon', quantity: 1, month: 1, year: 2021 }));
