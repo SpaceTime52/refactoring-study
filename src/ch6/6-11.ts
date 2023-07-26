@@ -11,12 +11,10 @@ export interface ShippingMethod {
 }
 
 export function priceOrder(product: Product, quantity: number, shippingMethod: ShippingMethod): number {
-  const basePrice = product.basePrice * quantity;
-  const discount = Math.max(quantity - product.discountThreshold, 0) * product.basePrice * product.discountRate;
-  const shippingPerCase = basePrice > shippingMethod.discountThreshold ? shippingMethod.discountedFee : shippingMethod.feePerCase;
-  const shippingCost = quantity * shippingPerCase;
-  const price = basePrice - discount + shippingCost;
-  return price;
+  const basePrice = calculateBasePrice(product, quantity);
+  const discount = calculateDiscount(product, quantity);
+  const shippingCost = calculateShippingCost(basePrice, shippingMethod, quantity);
+  return basePrice - discount + shippingCost;
 }
 
 // 사용 예:
@@ -33,3 +31,17 @@ const shippingMethod: ShippingMethod = {
 };
 
 const price: number = priceOrder(product, 5, shippingMethod);
+
+function calculateBasePrice(product: Product, quantity: number): number {
+  return product.basePrice * quantity;
+}
+
+function calculateDiscount(product: Product, quantity: number): number {
+  return Math.max(quantity - product.discountThreshold, 0) * product.basePrice * product.discountRate;
+}
+
+function calculateShippingCost(basePrice: number, shippingMethod: ShippingMethod, quantity: number): number {
+  const shippingPerCase = basePrice > shippingMethod.discountThreshold ? shippingMethod.discountedFee : shippingMethod.feePerCase;
+  const shippingCost = quantity * shippingPerCase;
+  return shippingCost;
+}
