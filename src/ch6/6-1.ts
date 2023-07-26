@@ -16,9 +16,7 @@ function printBanner() {
 }
 
 function calculateOutstanding(invoice: Invoice): number {
-  let result: number = 0;
-  for (const order of invoice.orders) result += order.amount; // 명확한 이름으로 변경
-  return result;
+  return invoice.orders.reduce((acc, cur) => acc + cur.amount, 0);
 }
 
 function updateDueDate(invoice: Invoice): void {
