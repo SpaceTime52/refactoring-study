@@ -8,4 +8,3 @@ interface Reading {
 
 const aReading: Reading = acquireReading();
 export const baseCharge: number = baseRate(aReading.month, aReading.year) * aReading.quantity;
-console.log(baseCharge);
