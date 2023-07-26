@@ -4,11 +4,7 @@ interface Driver {
 }
 
 export function rating(driver: Driver): number {
-  return moreThanFiveLateDeliveries(driver) ? 2 : 1;
-}
-
-function moreThanFiveLateDeliveries(driver: Driver): boolean {
-  return driver.numberOfLateDeliveries > 5;
+  return driver.numberOfLateDeliveries > 5 ? 2 : 1;
 }
 
 // 예제 2
@@ -17,13 +13,9 @@ interface Customer {
   location: string;
 }
 
-export function reportLines(customer: Customer): Array<Array<string>> {
-  const lines: Array<Array<string>> = [];
-  gatherCustomerData(lines, customer);
+export function reportLines(customer: Customer): string[][] {
+  const lines: string[][] = [];
+  lines.push(['name', customer.name]);
+  lines.push(['location', customer.location]);
   return lines;
-}
-
-function gatherCustomerData(out: Array<Array<string>>, customer: Customer): void {
-  out.push(['name', customer.name]);
-  out.push(['location', customer.location]);
 }
