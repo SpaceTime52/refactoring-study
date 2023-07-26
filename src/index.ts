@@ -45,7 +45,7 @@ function main(): void {
   console.log('6-5. false:', book.hasReservation({ id: 3 }));
 
   // 6-6
-  console.log('6-6. { firstName: 마틴, lastName: 파울러 }:', getDefaultOwner());
+  console.log('6-6. { firstName: 마틴, lastName: 파울러 }:', getDefaultOwner().firstName, getDefaultOwner().lastName);
 
   // 6-8
   console.log(
