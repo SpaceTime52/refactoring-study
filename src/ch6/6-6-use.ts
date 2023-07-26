@@ -6,6 +6,6 @@ interface Owner {
 }
 
 const owner: Owner = getDefaultOwner();
-owner.firstName = '엘리';
+owner.firstName = 'Bohyeon';
 console.log(owner);
 console.log(getDefaultOwner());
