@@ -9,7 +9,7 @@ import { circumference } from './ch6/6-5-1';
 import Book from './ch6/6-5-2';
 import { getDefaultOwner } from './ch6/6-6';
 import { readingsOutsideRange } from './ch6/6-8';
-import { calculateBaseCharge } from './ch6/6-9-client3';
+import { Reading } from './ch6/6-9';
 
 function main(): void {
   // 6-1 예제 1
@@ -54,7 +54,7 @@ function main(): void {
   );
 
   // 6-9
-  console.log('6-9. 0.2:', calculateBaseCharge({ customer: 'Bohyeon', quantity: 1, month: 1, year: 2021 }));
+  console.log('6-9. 0.2:', new Reading({ customer: 'Bohyeon', quantity: 1, month: 1, year: 2021 }).baseCharge);
 
   // 6-10
   console.log('6-10. 1:', baseCharge);
