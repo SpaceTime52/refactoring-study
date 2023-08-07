@@ -8,7 +8,7 @@ import { printSevenDashSeven } from './7-7';
 import { printSevenDashNine } from './7-9';
 
 export function chapterSeven(): void {
-  console.log('Chapter 7: Encapsulate Record');
+  console.log('Chapter 7: Starts Here');
   printSevenDashOne();
   printSevenDashTwo();
   printSevenDashThree();
