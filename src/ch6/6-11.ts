@@ -33,4 +33,3 @@ const shippingMethod: ShippingMethod = {
 };
 
 const price: number = priceOrder(product, 5, shippingMethod);
-console.log(price);
