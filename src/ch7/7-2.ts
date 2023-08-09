@@ -30,19 +30,25 @@ class Person {
   }
 
   get courses(): Course[] {
-    return this.#courses;
+    return [...this.#courses];
   }
 
-  set courses(courses: Course[]) {
-    this.#courses = courses;
+  // 코스를 추가하고 싶을 때 활용
+  addCourse(course: Course): void {
+    this.#courses.push(course);
   }
 }
 
 export { Person, Course };
 
 const bohyeon = new Person('BK');
-bohyeon.courses.push(new Course('리팩토링', true));
+
+// person.courses 에 새로운 코스를 만들면서 추가할 수 있다?
+bohyeon.courses.push(new Course('알고리즘', false)); // 직접 주입에 실패해야 함
+bohyeon.addCourse(new Course('리팩토링', true));
 
 export function printSevenDashTwo(): void {
   console.log('1:', bohyeon.courses.length);
 }
+
+// 코스 업데이트 불가
