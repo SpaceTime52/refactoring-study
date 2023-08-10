@@ -3,7 +3,7 @@ import { chapterSeven } from './ch7/chapter-7-player';
 
 function main(): void {
   // chapterSix();
-  chapterSeven();
+  // chapterSeven();
 }
 
 main();
