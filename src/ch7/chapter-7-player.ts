@@ -9,11 +9,11 @@ import { printSevenDashNine } from './7-9';
 
 export function chapterSeven(): void {
   console.log('Chapter 7: Starts Here');
-  printSevenDashOne();
-  printSevenDashTwo();
-  printSevenDashThree();
-  printSevenDashFour();
-  printSevenDashFive();
+  // printSevenDashOne();
+  // printSevenDashTwo();
+  // printSevenDashThree();
+  // printSevenDashFour();
+  // printSevenDashFive();
   printSevenDashSix();
   printSevenDashSeven();
   printSevenDashNine();
