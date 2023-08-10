@@ -1,3 +1,5 @@
+// 7.7 위임 숨기기
+
 class Person {
   #name: string;
   #department: Department;
@@ -17,6 +19,14 @@ class Person {
 
   set department(arg: Department) {
     this.#department = arg;
+  }
+
+  get manager(): string {
+    return this.#department.manager;
+  }
+
+  get chargeCode(): string {
+    return this.#department.chargeCode;
   }
 }
 
@@ -50,6 +60,6 @@ const person = new Person('Tom', new Department('aManager', '999'));
 
 export function printSevenDashSeven(): void {
   console.log('Tom:', person.name);
-  console.log('aManager:', person.department.manager);
-  console.log('999:', person.department.chargeCode);
+  console.log('aManager:', person.manager);
+  console.log('999:', person.chargeCode);
 }
