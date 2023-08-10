@@ -1,4 +1,5 @@
-class DepartmentA {
+// 7.8 중개자 제거하기
+class PersonA {
   #manager: string;
 
   constructor(data: { manager: string }) {
@@ -11,22 +12,6 @@ class DepartmentA {
 
   set manager(arg: string) {
     this.#manager = arg;
-  }
-}
-
-class PersonA {
-  #department: DepartmentA;
-
-  constructor(data: { manager: string }) {
-    this.#department = new DepartmentA(data);
-  }
-
-  get manager(): string {
-    return this.#department.manager;
-  }
-
-  set manager(arg: string) {
-    this.#department.manager = arg;
   }
 }
 
