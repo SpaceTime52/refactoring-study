@@ -37,3 +37,9 @@ export class AccountType {
     return this._type === 'Premium';
   }
 }
+
+export function printEightDashOneSecond() {
+  console.log('\nchapter 8.1.2 >>>>>>>>>> ');
+  console.log(' 17.05:', new Account(new AccountType('Premium'), 10).bankCharge);
+  console.log(' 14.5:', new Account(new AccountType('Premium'), 5).bankCharge);
+}

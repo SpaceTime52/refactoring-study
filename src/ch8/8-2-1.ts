@@ -1,6 +1,6 @@
 type Money = {
-  subtract: (value: number) => Money;
-  multiply: (value: number) => Money;
+  subtract: (value: number) => number;
+  multiply: (value: number) => number;
 };
 
 export class Customer {
@@ -23,7 +23,7 @@ export class Customer {
     // other code...
   }
 
-  applyDiscount(amount: Money): Money {
+  applyDiscount(amount: Money): number {
     return amount.subtract(amount.multiply(this.#discountRate));
   }
 
@@ -38,4 +38,9 @@ class CustomerContract {
   constructor(startDate: Date) {
     this.#startDate = startDate;
   }
+}
+
+export function printEightDashTwoFirst() {
+  console.log('\nchapter 8.2.1 >>>>>>>>>> ');
+  console.log(' 0.1:', new Customer('martin', 0.1).discountRate);
 }

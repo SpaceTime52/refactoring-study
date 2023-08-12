@@ -3,6 +3,7 @@ interface Point {
   lon: number;
 }
 
+// 함수의 역할: latitude, longitude 포인트 두개를 받아서 정보를 계산한다.
 export function trackSummary(points: Point[]): { time: number; distance: number; pace: number } {
   const totalTime = calculateTime();
   const totalDistance = calculateDistance();
@@ -39,15 +40,19 @@ export function trackSummary(points: Point[]): { time: number; distance: number;
   }
 }
 
-const newYork: Point = {
-  lat: 40.73061,
-  lon: -73.935242,
-};
+export function printEightDashOneFirst() {
+  const newYork: Point = {
+    lat: 40.73061,
+    lon: -73.935242,
+  };
 
-const tokyo: Point = {
-  lat: 35.652832,
-  lon: 139.839478,
-};
+  const tokyo: Point = {
+    lat: 35.652832,
+    lon: 139.839478,
+  };
 
-const summary = trackSummary([newYork, tokyo]);
-console.log(summary);
+  const summary = trackSummary([newYork, tokyo]);
+
+  console.log('\nchapter 8.1.1 >>>>>>>>>> ');
+  console.log(' { time: 10000, distance: 6740.914927144901, pace: 0.02472463581991205 }\n', summary);
+}

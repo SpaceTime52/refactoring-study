@@ -30,5 +30,24 @@ function emitPhotoData(aPhoto: Photo): string {
 }
 
 function renderPhoto(aPhoto: Photo): string {
-  return '';
+  return 'rendered photo';
+}
+
+export function printEightDashThree() {
+  console.log('\nchapter 8.3 >>>>>>>>>> ');
+  const person: Person = {
+    name: 'name',
+    photo: {
+      title: 'title',
+      location: 'location',
+      date: new Date(),
+    },
+  };
+  console.log(`<p>name</p>
+rendered photo
+<p>title: title</p>
+<p>location: location</p>
+<p>date: Sat Aug 12 2023</p>
+---`);
+  console.log(renderPerson(person));
 }

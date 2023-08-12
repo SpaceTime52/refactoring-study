@@ -47,3 +47,9 @@ function someFunc(): Resource {
   }
   return result;
 }
+
+export function printEightDashSix() {
+  console.log('\nchapter 8.6 >>>>>>>>>> ');
+  console.log('10:', chargePerUnit);
+  console.log('{}', someFunc());
+}

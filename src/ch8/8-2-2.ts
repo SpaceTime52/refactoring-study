@@ -21,3 +21,8 @@ class AccountType {
     this._name = nameString;
   }
 }
+
+export function printEightDashTwoSecond() {
+  console.log('\nchapter 8.2.2 >>>>>>>>>> ');
+  console.log(' 0.1:', new Account(1234, new AccountType('Premium'), 0.1).interestRate);
+}
