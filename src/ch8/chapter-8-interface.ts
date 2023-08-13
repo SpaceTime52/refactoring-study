@@ -7,3 +7,14 @@ export enum AccountType {
   NORMAL = 'Normal',
   PREMIUM = 'Premium',
 }
+
+export interface Person {
+  name: string;
+  photo: Photo;
+}
+
+export interface Photo {
+  title: string;
+  location: string;
+  date: Date;
+}
