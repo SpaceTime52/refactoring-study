@@ -22,3 +22,15 @@ export interface Photo {
 export interface OutStream {
   write: (data: string) => void;
 }
+
+export interface PricingPlan {
+  unit: number;
+}
+
+export interface Order {
+  // Assuming the Order structure, but I'd need more context to specify the exact properties.
+}
+
+export interface Resource {
+  // Assuming the Resource structure, but I'd need more context to specify the exact properties.
+}
