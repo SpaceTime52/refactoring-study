@@ -18,3 +18,7 @@ export interface Photo {
   location: string;
   date: Date;
 }
+
+export interface OutStream {
+  write: (data: string) => void;
+}

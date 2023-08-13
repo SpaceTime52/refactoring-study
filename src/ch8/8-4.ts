@@ -1,30 +1,19 @@
-interface Photo {
-  title: string;
-  location: string;
-  date: Date;
-}
-
-interface Person {
-  name: string;
-  photo: Photo;
-}
-
-interface OutStream {
-  write: (data: string) => void;
-}
+import { Person, Photo, OutStream } from './chapter-8-interface';
 
 function renderPerson(outStream: OutStream, person: Person): void {
   outStream.write(`<p>${person.name}</p>`);
   renderPhoto(outStream, person.photo);
   emitPhotoData(outStream, person.photo);
+  outStream.write(`<p>location: ${person.photo.location}</p>`);
 }
 
 function listRecentPhotos(outStream: OutStream, photos: Photo[]): void {
   photos
-    .filter((p) => p.date > recentDateCutoff())
-    .forEach((p) => {
-      outStream.write('<div>\n');
-      emitPhotoData(outStream, p);
+    .filter((photo: Photo) => photo.date > recentDateCutoff())
+    .forEach((photo: Photo) => {
+      outStream.write('<div>');
+      emitPhotoData(outStream, photo);
+      outStream.write(`<p>location: ${photo.location}</p>`);
       outStream.write('</div>\n');
     });
 }
@@ -32,7 +21,6 @@ function listRecentPhotos(outStream: OutStream, photos: Photo[]): void {
 function emitPhotoData(outStream: OutStream, photo: Photo): void {
   outStream.write(`<p>title: ${photo.title}</p>`);
   outStream.write(`<p>date: ${photo.date.toDateString()}</p>`);
-  outStream.write(`<p>location: ${photo.location}</p>`);
 }
 
 function renderPhoto(outStream: OutStream, aPhoto: Photo): void {
@@ -45,14 +33,9 @@ function recentDateCutoff(): Date {
   return date;
 }
 
+// ---------------------------------------------------
+
 export function printEightDashFour() {
-  console.log('\nchapter 8.4 >>>>>>>>>> ');
-  console.log(`<p>name</p>
-rendered photo
-<p>title: title</p>
-<p>date: Sat Aug 12 2023</p>
-<p>location: location</p>
----`);
   const person: Person = {
     name: 'name',
     photo: {
@@ -61,5 +44,26 @@ rendered photo
       date: new Date(),
     },
   };
+
+  console.log('\nchapter 8.4 >>>>>>>>>> ');
+  console.log(`Person
+<p>name</p>
+rendered photo
+<p>title: title</p>
+<p>date: ${new Date().toDateString()}</p>
+<p>location: location</p>
+
+List of Recent Photos
+<div>
+<p>title: title</p>
+<p>date: Sun Aug 13 2023</p>
+<p>location: location</p>
+</div>
+---`);
+  console.log('Person');
   renderPerson({ write: (data: string) => console.log(data) }, person);
+  console.log('\nList of Recent Photos');
+  listRecentPhotos({ write: (data: string) => console.log(data) }, [
+    person.photo,
+  ]);
 }
