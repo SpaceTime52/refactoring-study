@@ -5,26 +5,24 @@ type Money = {
 
 export class Customer {
   #name: string;
-  #discountRate: number;
   #contract: CustomerContract;
 
   constructor(name: string, discountRate: number) {
     this.#name = name;
-    this.#discountRate = discountRate;
-    this.#contract = new CustomerContract(this.dateToday());
+    this.#contract = new CustomerContract(this.dateToday(), discountRate);
   }
 
   get discountRate(): number {
-    return this.#discountRate;
+    return this.#contract.discountRate;
   }
 
   becomePreferred(): void {
-    this.#discountRate += 0.03;
+    this.#contract.discountRate += 0.03;
     // other code...
   }
 
   applyDiscount(amount: Money): number {
-    return amount.subtract(amount.multiply(this.#discountRate));
+    return amount.subtract(amount.multiply(this.discountRate));
   }
 
   dateToday(): Date {
@@ -34,9 +32,19 @@ export class Customer {
 
 class CustomerContract {
   #startDate: Date;
+  #discountRate: number;
 
-  constructor(startDate: Date) {
+  constructor(startDate: Date, discountRate: number) {
     this.#startDate = startDate;
+    this.#discountRate = discountRate;
+  }
+
+  get discountRate(): number {
+    return this.#discountRate;
+  }
+
+  set discountRate(value: number) {
+    this.#discountRate = value;
   }
 }
 
