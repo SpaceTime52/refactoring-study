@@ -1,6 +1,7 @@
-import { AccountTypeEnum } from './chapter-8-interface';
+import { AccountType } from './chapter-8-interface';
 
 export class Account {
+  BASE_CHARGE = 10;
   #type: AccountType;
   #daysOverdrawn: number;
 
@@ -13,37 +14,30 @@ export class Account {
     let result = 4.5;
     return this.#daysOverdrawn <= 0
       ? result
-      : (result += this.#type.overdraftCharge(this.#daysOverdrawn));
+      : (result += this.overdraftCharge(this.#daysOverdrawn));
   }
 
   get daysOverdrawn(): number {
     return this.#daysOverdrawn;
   }
-}
-
-export class AccountType {
-  #type: string;
-
-  constructor(type: AccountTypeEnum) {
-    this.#type = type;
-  }
 
   get isPremium(): boolean {
-    return this.#type === AccountTypeEnum.PREMIUM;
+    return this.#type === AccountType.PREMIUM;
   }
 
   overdraftCharge(daysOverdrawn: number): number {
     if (!this.isPremium) {
       return daysOverdrawn * 1.75;
     } else {
-      const baseCharge = 10;
-      return daysOverdrawn <= 7 ? baseCharge : baseCharge + (daysOverdrawn - 7) * 0.85;
+      return daysOverdrawn <= 7
+        ? this.BASE_CHARGE
+        : this.BASE_CHARGE + (daysOverdrawn - 7) * 0.85;
     }
   }
 }
 
 export function printEightDashOneSecond() {
   console.log('\nchapter 8.1.2 >>>>>>>>>> ');
-  console.log(' 17.05:', new Account(new AccountType(AccountTypeEnum.PREMIUM), 10).bankCharge);
-  console.log(' 14.5:', new Account(new AccountType(AccountTypeEnum.PREMIUM), 5).bankCharge);
+  console.log(' 17.05:', new Account(AccountType.PREMIUM, 10).bankCharge);
+  console.log(' 14.5:', new Account(AccountType.PREMIUM, 5).bankCharge);
 }

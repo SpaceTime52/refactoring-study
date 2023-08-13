@@ -3,7 +3,7 @@ export interface Point {
   longitude: number;
 }
 
-export enum AccountTypeEnum {
+export enum AccountType {
   NORMAL = 'Normal',
   PREMIUM = 'Premium',
 }
