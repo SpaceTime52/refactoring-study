@@ -1,11 +1,7 @@
-const states: string[] = ['NY', 'CA', 'MA', 'TX']; // Example data for demonstration purposes
-
-let appliesToMass: boolean = false;
-for (const s of states) {
-  if (s === 'MA') appliesToMass = true;
-}
+const states: string[] = ['NY', 'CA', 'MA', 'TX'];
+const hasAppliesToMass: boolean = states.includes('MA');
 
 export function printEightDashFive() {
   console.log('\nchapter 8.5 >>>>>>>>>> ');
-  console.log('true:', appliesToMass);
+  console.log('true:', hasAppliesToMass);
 }
