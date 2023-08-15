@@ -32,13 +32,9 @@ export interface PricingPlan {
   unit: number;
 }
 
-export interface Order {
-  // Assuming the Order structure, but I'd need more context to specify the exact properties.
-}
+export interface Order {}
 
-export interface Resource {
-  // Assuming the Resource structure, but I'd need more context to specify the exact properties.
-}
+export interface Resource {}
 
 export interface DataRecord {
   city: string;
