@@ -39,3 +39,8 @@ export interface Order {
 export interface Resource {
   // Assuming the Resource structure, but I'd need more context to specify the exact properties.
 }
+
+export interface DataRecord {
+  city: string;
+  phone: string;
+}

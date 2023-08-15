@@ -1,24 +1,15 @@
-interface DataRecord {
-  city: string;
-  phone: string;
-}
+import { DataRecord } from './chapter-8-interface';
 
 export function acquireData(input: string): DataRecord[] {
-  const lines = input.split('\n');
-  let firstLine = true;
-  const result: DataRecord[] = [];
-  for (const line of lines) {
-    if (firstLine) {
-      firstLine = false;
-      continue;
-    }
-    if (line.trim() === '') continue;
-    const record = line.split(',');
-    if (record[1].trim() === 'India') {
-      result.push({ city: record[0].trim(), phone: record[2].trim() });
-    }
-  }
-  return result;
+  return input
+    .split('\n') // 배열로 만들기
+    .splice(1) // 첫줄 제외
+    .filter((line: string) => line.includes('India')) // 필터링
+    .map((line: string) => {
+      // 반환값 매핑
+      const record = line.split(',');
+      return { city: record[0].trim(), phone: record[2].trim() };
+    });
 }
 
 export function printEightDashEight() {
@@ -29,10 +20,10 @@ Beijing, China, +86 4008 900 505\n
 Bangalore, India, +91 80 4064 9570\n
 Porto Alegre, Brazil, +55 51 3079 3550\n
 Chennai, India, +91 44 660 44766`;
-  const result: DataRecord[] = acquireData(input);
+  const results: DataRecord[] = acquireData(input);
   console.log(`[
   { city: 'Bangalore', phone: '+91 80 4064 9570' },
   { city: 'Chennai', phone: '+91 44 660 44766' }
 ]`);
-  console.log(result);
+  console.log(results);
 }
