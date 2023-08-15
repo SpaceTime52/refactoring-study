@@ -13,6 +13,11 @@ export interface Person {
   photo: Photo;
 }
 
+export interface PersonChapter7 {
+  age: number;
+  salary: number;
+}
+
 export interface Photo {
   title: string;
   location: string;

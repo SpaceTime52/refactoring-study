@@ -1,17 +1,20 @@
-interface Person {
-  age: number;
-  salary: number;
-}
+import { PersonChapter7 as Person } from './chapter-8-interface';
 
 export function reportYoungestAgeAndTotalSalary(people: Person[]): string {
-  let youngest = people[0] ? people[0].age : Infinity;
-  let totalSalary = 0;
-  for (const p of people) {
-    if (p.age < youngest) youngest = p.age;
-    totalSalary += p.salary;
-  }
+  return `youngestAge: ${youngest(people)}, totalSalary: ${totalSalary(
+    people,
+  )}`;
+}
 
-  return `youngestAge: ${youngest}, totalSalary: ${totalSalary}`;
+function totalSalary(people: Person[]) {
+  return people.reduce(
+    (total: number, person: Person) => total + person.salary,
+    0,
+  );
+}
+
+function youngest(people: Person[]) {
+  return Math.min(...people.map((person: Person) => person.age));
 }
 
 export function printEightDashSeven(): void {
