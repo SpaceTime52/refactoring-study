@@ -13,8 +13,8 @@ interface OperationPlan {
   temperatureCeiling: number;
 }
 
-export function readingsOutsideRange(station: Station, min: number, max: number): Reading[] {
-  return station.readings.filter((r) => r.temp < min || r.temp > max);
+export function readingsOutsideRange(station: Station, range: OperationPlan): Reading[] {
+  return station.readings.filter((r) => r.temp < range.temperatureFloor || r.temp > range.temperatureCeiling);
 }
 
 const station: Station = {
@@ -33,4 +33,4 @@ const operationPlan: OperationPlan = {
   temperatureCeiling: 53,
 };
 
-readingsOutsideRange(station, operationPlan.temperatureFloor, operationPlan.temperatureCeiling);
+readingsOutsideRange(station, operationPlan);

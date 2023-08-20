@@ -1,10 +1,6 @@
-import { acquireReading, baseRate } from './6-10';
+import { Reading, acquireReading, enrichReading } from './6-10';
 
-interface Reading {
-  month: number;
-  year: number;
-  quantity: number;
-}
+const rawReading: Reading = acquireReading();
+const reading: Reading = enrichReading(rawReading);
 
-const aReading: Reading = acquireReading();
-export const baseCharge: number = baseRate(aReading.month, aReading.year) * aReading.quantity;
+export const baseCharge: number = reading?.baseCharge ? reading?.baseCharge : 0;

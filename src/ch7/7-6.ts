@@ -1,55 +1,34 @@
-export class TrackingInformation {
-  #shippingCompany: string;
+// 7.6 클래스 인라인하기
+
+export class Shipment {
   #trackingNumber: number;
+  #shippingCompany: string;
 
   constructor(trackingNumber: number, shippingCompany: string) {
     this.#trackingNumber = trackingNumber;
     this.#shippingCompany = shippingCompany;
   }
 
-  get shippingCompany(): string {
-    return this.#shippingCompany;
-  }
-
-  set shippingCompany(arg: string) {
-    this.#shippingCompany = arg;
-  }
-
-  get trackingNumber(): number {
-    return this.#trackingNumber;
-  }
-
-  set trackingNumber(arg: number) {
-    this.#trackingNumber = arg;
-  }
-
-  get display(): string {
-    return `${this.shippingCompany}: ${this.trackingNumber}`;
-  }
-}
-
-export class Shipment {
-  #trackingInformation: TrackingInformation;
-
-  constructor(trackingInformation: TrackingInformation) {
-    this.#trackingInformation = trackingInformation;
-  }
-
   get trackingInfo(): string {
-    return this.#trackingInformation.display;
+    return `${this.#shippingCompany}: ${this.#trackingNumber}`;
   }
 
-  get trackingInformation(): TrackingInformation {
-    return this.#trackingInformation;
+  get trackingInformation(): { shippingCompany: string; trackingNumber: number } {
+    return {
+      shippingCompany: this.#shippingCompany,
+      trackingNumber: this.#trackingNumber,
+    };
   }
 
-  set trackingInformation(trackingInformation: TrackingInformation) {
-    this.#trackingInformation = trackingInformation;
+  set trackingInformation(trackingInformation: { shippingCompany: string; trackingNumber: number }) {
+    this.#trackingNumber = trackingInformation.trackingNumber;
+    this.#shippingCompany = trackingInformation.shippingCompany;
   }
 }
 
 export function printSevenDashSix(): void {
-  const shipment = new Shipment(new TrackingInformation(999, 'Maersk'));
+  // 너무 분산된 정보들을 통합해서 관리하는 게 더 좋을 때가 있다.
+  const shipment = new Shipment(999, 'Maersk');
   console.log('Maersk: 999:', shipment.trackingInfo);
 
   shipment.trackingInformation.shippingCompany = 'COSCO';

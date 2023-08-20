@@ -11,11 +11,16 @@ class ItemOrder {
     this.#item = item;
   }
 
+  get basePrice(): number {
+    return this.#quantity * this.#item.price;
+  }
+
+  get discountFactor(): number {
+    return this.basePrice > 1000 ? 0.95 : 0.98;
+  }
+
   get price(): number {
-    const basePrice = this.#quantity * this.#item.price;
-    let discountFactor = 0.98;
-    if (basePrice > 1000) discountFactor -= 0.03;
-    return basePrice * discountFactor;
+    return this.basePrice * this.discountFactor;
   }
 }
 

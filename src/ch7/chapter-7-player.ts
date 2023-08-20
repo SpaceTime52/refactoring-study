@@ -5,10 +5,11 @@ import { printSevenDashFour } from './7-4';
 import { printSevenDashFive } from './7-5';
 import { printSevenDashSix } from './7-6';
 import { printSevenDashSeven } from './7-7';
+import { printSevenDashEight } from './7-8';
 import { printSevenDashNine } from './7-9';
 
 export function chapterSeven(): void {
-  console.log('Chapter 7: Encapsulate Record');
+  console.log('Chapter 7: Starts Here');
   printSevenDashOne();
   printSevenDashTwo();
   printSevenDashThree();
@@ -16,5 +17,6 @@ export function chapterSeven(): void {
   printSevenDashFive();
   printSevenDashSix();
   printSevenDashSeven();
+  printSevenDashEight();
   printSevenDashNine();
 }
