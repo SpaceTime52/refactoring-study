@@ -4,3 +4,8 @@ export interface Scenario {
   mass: number;
   delay: number;
 }
+
+export type OrganizationData = {
+  title: string;
+  country: string;
+};

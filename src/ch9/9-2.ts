@@ -1,41 +1,37 @@
-type OrganizationData = {
-  name: string;
-  country: string;
-};
+import { OrganizationData } from './chapter-9-interface';
 
 class Organization {
-  private _name: string;
-  private _country: string;
+  #title: string;
+  #country: string;
 
   constructor(data: OrganizationData) {
-    this._name = data.name;
-    this._country = data.country;
+    this.#title = data.title;
+    this.#country = data.country;
   }
 
-  get name(): string {
-    return this._name;
+  get title(): string {
+    return this.#title;
   }
 
-  set name(value: string) {
-    this._name = value;
+  set title(value: string) {
+    this.#title = value;
   }
 
   get country(): string {
-    return this._country;
+    return this.#country;
   }
 
   set country(value: string) {
-    this._country = value;
+    this.#country = value;
   }
 }
 
-const organization = new Organization({
-  name: '크리에이트립',
-  country: '대한민국',
-});
-
 export function printNineDashTwo(): void {
+  const organization = new Organization({
+    title: '크리에이트립',
+    country: '대한민국',
+  });
   console.log('\nChapter 9.2 >>>>>>>>>>');
-  console.log('크리에이트립: ', organization.name);
+  console.log('크리에이트립: ', organization.title);
   console.log('대한민국: ', organization.country);
 }
