@@ -1,19 +1,21 @@
 // 예제 1
 class Order {
-  private _discountedTotal: number;
-  private _discount: number;
+  #discountedTotal: number;
+  #discount: number;
 
-  // Assuming there are other properties and they are initialized in the constructor.
-  // ... other code ...
+  constructor() {
+    this.#discountedTotal = 100;
+    this.#discount = 0;
+  }
 
   get discountedTotal(): number {
-    return this._discountedTotal;
+    return this.#discountedTotal;
   }
 
   set discount(value: number) {
-    const old = this._discount;
-    this._discount = value;
-    this._discountedTotal += old - value;
+    const old = this.#discount;
+    this.#discount = value;
+    this.#discountedTotal += old - value;
   }
 }
 
@@ -24,18 +26,29 @@ type Adjustment = {
 };
 
 class ProductionPlan {
-  private _production: number;
-  private _adjustments: Adjustment[] = [];
+  #production: number;
+  #adjustments: Adjustment[] = [];
 
-  // Assuming there are other properties and they are initialized in the constructor.
-  // ... other code ...
+  constructor(production: number) {
+    this.#production = production;
+  }
 
   get production(): number {
-    return this._production;
+    return this.#production;
   }
 
   applyAdjustment(adjustment: Adjustment): void {
-    this._adjustments.push(adjustment);
-    this._production += adjustment.amount;
+    this.#adjustments.push(adjustment);
+    this.#production += adjustment.amount;
   }
+}
+
+export function printNineDashThree(): void {
+  console.log('\nChapter 9.3 >>>>>>>>>>');
+  const order = new Order();
+  order.discount = 10;
+  console.log('90: ', order.discountedTotal);
+  const productionPlan = new ProductionPlan(100);
+  productionPlan.applyAdjustment({ amount: 10 });
+  console.log('110: ', productionPlan.production);
 }

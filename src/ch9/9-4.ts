@@ -66,8 +66,11 @@ class TelephoneNumber {
   }
 }
 
-const person = new Person('보현', '010', '12345678');
-console.log(person.name);
-console.log(person.officeAreaCode);
-console.log(person.officeNumber);
-console.log(person.telephoneNumber);
+export function printNineDashFour(): void {
+  console.log('\nChapter 9.4 >>>>>>>>>>');
+  const person = new Person('보현', '010', '12345678');
+  console.log('보현:', person.name);
+  console.log('010:', person.officeAreaCode);
+  console.log('12345678:', person.officeNumber);
+  console.log('(010) 12345678:', person.telephoneNumber);
+}

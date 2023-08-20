@@ -33,3 +33,9 @@ const organization = new Organization({
   name: '크리에이트립',
   country: '대한민국',
 });
+
+export function printNineDashTwo(): void {
+  console.log('\nChapter 9.2 >>>>>>>>>>');
+  console.log('크리에이트립: ', organization.name);
+  console.log('대한민국: ', organization.country);
+}
