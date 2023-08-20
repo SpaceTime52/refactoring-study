@@ -13,6 +13,7 @@
   "license": "ISC",
   "dependencies": {
     "jest": "^29.6.1",
+    "lodash": "^4.17.21",
     "typescript": "^5.1.6"
   },
   "devDependencies": {

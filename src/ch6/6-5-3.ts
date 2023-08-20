@@ -6,6 +6,6 @@ interface Customer {
   address: Address;
 }
 
-export function inNewEngland(aCustomer: Customer): boolean {
-  return ['MA', 'CT', 'ME', 'VT', 'NH', 'RI'].includes(aCustomer.address.state);
+export function inNewEngland(state: string): boolean {
+  return ['MA', 'CT', 'ME', 'VT', 'NH', 'RI'].includes(state);
 }
