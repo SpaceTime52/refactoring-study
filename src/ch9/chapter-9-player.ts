@@ -11,6 +11,6 @@ export function chapterNine(): void {
   // printNineDashTwo();
   // printNineDashThree();
   // printNineDashFour();
-  printNineDashFive();
+  // printNineDashFive();
   // printNineDashSix();
 }

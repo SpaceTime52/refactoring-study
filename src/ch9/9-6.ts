@@ -1,5 +1,7 @@
+const STANDARD_GRAVITY = 9.81;
+
 function potentialEnergy(mass: number, height: number): number {
-  return mass * 9.81 * height;
+  return mass * STANDARD_GRAVITY * height;
 }
 
 export function printNineDashSix(): void {
