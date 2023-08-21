@@ -9,3 +9,8 @@ export type OrganizationData = {
   title: string;
   country: string;
 };
+
+export type Adjustment = {
+  amount: number;
+  // ... possibly other properties ...
+};

@@ -8,8 +8,8 @@ import { printNineDashSix } from './9-6';
 export function chapterNine(): void {
   console.log('Chapter 9: Organizing Data');
   // printNineDashOne();
-  printNineDashTwo();
-  // printNineDashThree();
+  // printNineDashTwo();
+  printNineDashThree();
   // printNineDashFour();
   // printNineDashFive();
   // printNineDashSix();

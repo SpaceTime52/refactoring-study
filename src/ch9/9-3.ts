@@ -1,30 +1,25 @@
+import { Adjustment } from './chapter-9-interface';
+
 // 예제 1
 class Order {
-  #discountedTotal: number;
+  #basePrice: number;
   #discount: number;
 
   constructor() {
-    this.#discountedTotal = 100;
+    this.#basePrice = 100;
     this.#discount = 0;
   }
 
   get discountedTotal(): number {
-    return this.#discountedTotal;
+    return this.#basePrice - this.#discount;
   }
 
   set discount(value: number) {
-    const old = this.#discount;
     this.#discount = value;
-    this.#discountedTotal += old - value;
   }
 }
 
 // 예제 2
-type Adjustment = {
-  amount: number;
-  // ... possibly other properties ...
-};
-
 class ProductionPlan {
   #production: number;
   #adjustments: Adjustment[] = [];
@@ -34,12 +29,14 @@ class ProductionPlan {
   }
 
   get production(): number {
-    return this.#production;
+    return this.#adjustments.reduce(
+      (sum: number, adjustment: Adjustment) => sum + adjustment.amount,
+      this.#production,
+    );
   }
 
   applyAdjustment(adjustment: Adjustment): void {
     this.#adjustments.push(adjustment);
-    this.#production += adjustment.amount;
   }
 }
 
