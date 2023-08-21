@@ -1,31 +1,30 @@
-type OrderData = {
-  number: number;
-  customerId: number;
-};
+import { CustomerRepository } from './9-5.customer.repository';
+import { OrderData } from './chapter-9-interface';
 
-class Order {
-  private _number: number;
-  private _customer: Customer;
+export class Order {
+  #number: number;
+  #customer: Customer;
+  customerRepository: CustomerRepository = new CustomerRepository();
 
   constructor(data: OrderData) {
-    this._number = data.number;
-    this._customer = new Customer(data.customerId);
+    this.#number = data.number;
+    this.#customer = this.customerRepository.registerCustomer(data.customerId)!; // 값 -> 참조
   }
 
   get customer(): Customer {
-    return this._customer;
+    return this.#customer!;
   }
 }
 
-class Customer {
-  private _id: number;
+export class Customer {
+  #id: number;
 
   constructor(id: number) {
-    this._id = id;
+    this.#id = id;
   }
 
   get id(): number {
-    return this._id;
+    return this.#id;
   }
 }
 

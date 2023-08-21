@@ -14,3 +14,8 @@ export type Adjustment = {
   amount: number;
   // ... possibly other properties ...
 };
+
+export type OrderData = {
+  number: number;
+  customerId: number;
+};

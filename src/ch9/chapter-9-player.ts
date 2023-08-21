@@ -10,7 +10,7 @@ export function chapterNine(): void {
   // printNineDashOne();
   // printNineDashTwo();
   // printNineDashThree();
-  printNineDashFour();
-  // printNineDashFive();
+  // printNineDashFour();
+  printNineDashFive();
   // printNineDashSix();
 }
