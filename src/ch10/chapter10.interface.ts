@@ -5,3 +5,9 @@ export interface Plan {
   regularRate: number;
   regularServiceCharge: number;
 }
+
+export interface Employee {
+  seniority: number;
+  monthsDisabled: number;
+  isPartTime: boolean;
+}
