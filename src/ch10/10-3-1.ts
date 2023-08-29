@@ -1,29 +1,17 @@
-interface Employee {
-  isSeparated: boolean;
-  isRetired: boolean;
-}
+import { EmployeeDash, Payment } from './chapter10.interface';
 
-interface Payment {
-  amount: number;
-  reasonCode: string;
-}
-
-export function payAmount(employee: Employee): Payment {
+export function payAmount(employee: EmployeeDash): Payment {
   let result: Payment;
 
   if (employee.isSeparated) {
-    result = { amount: 0, reasonCode: 'SEP' };
-  } else if (employee.isRetired) {
-    result = { amount: 0, reasonCode: 'RET' };
-  } else {
-    // lorem.ipsum(dolor.sitAmet);
-    // consectetur(adipiscing).elit();
-    // sed.do.eiusmod = tempor.incididunt.ut(labore) && dolore(magna.aliqua);
-    // ut.enim.ad(minim.veniam);
-    return someFinalComputation();
+    return { amount: 0, reasonCode: 'SEP' };
   }
 
-  return result;
+  if (employee.isRetired) {
+    return { amount: 0, reasonCode: 'RET' };
+  }
+
+  return someFinalComputation();
 }
 
 function someFinalComputation(): Payment {

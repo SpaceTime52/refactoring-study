@@ -11,3 +11,21 @@ export interface Employee {
   monthsDisabled: number;
   isPartTime: boolean;
 }
+
+export interface EmployeeDash {
+  isSeparated: boolean;
+  isRetired: boolean;
+}
+
+export interface Payment {
+  amount: number;
+  reasonCode: string;
+}
+
+export interface Instrument {
+  capital: number;
+  interestRate: number;
+  duration: number;
+  income: number;
+  adjustmentFactor: number;
+}

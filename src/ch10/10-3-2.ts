@@ -1,17 +1,16 @@
-interface Instrument {
-  capital: number;
-  interestRate: number;
-  duration: number;
-  income: number;
-  adjustmentFactor: number;
-}
+import { Instrument } from './chapter10.interface';
 
 export function adjustedCapital(instrument: Instrument): number {
-  let result = 0;
-  if (instrument.capital > 0) {
-    if (instrument.interestRate > 0 && instrument.duration > 0) {
-      result = (instrument.income / instrument.duration) * instrument.adjustmentFactor;
-    }
-  }
-  return result;
+  if (!isEligibleForAdjustedCapital(instrument)) return 0;
+  return (
+    (instrument.income / instrument.duration) * instrument.adjustmentFactor
+  );
+}
+
+function isEligibleForAdjustedCapital(instrument: Instrument): boolean {
+  return (
+    instrument.capital > 0 &&
+    instrument.interestRate > 0 &&
+    instrument.duration > 0
+  );
 }
