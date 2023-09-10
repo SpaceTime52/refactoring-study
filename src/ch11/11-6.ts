@@ -1,6 +1,11 @@
-import { Plan, Thermostat } from './chapter-11.interfaces';
+import { Plan } from './chapter-11.interfaces';
 
-export function targetTemperature(aPlan: Plan, thermostat: Thermostat): void {
-  const currentTemperature = thermostat.currentTemperature;
+export function targetTemperature(
+  plan: Plan,
+  currentTemperature: number,
+): void {
+  currentTemperature = currentTemperature;
   // ...
 }
+
+targetTemperature(plan, currentTemperature);
