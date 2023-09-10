@@ -29,3 +29,21 @@ export interface Instrument {
   income: number;
   adjustmentFactor: number;
 }
+
+export interface Bird {
+  name: string;
+  type: string;
+  numberOfCoconuts?: number; // Optional because not all birds will have this
+  voltage?: number; // Optional because not all birds will have this
+  isNailed?: boolean; // Optional because not all birds will have this
+}
+
+export interface Voyage {
+  zone: string;
+  length: number;
+}
+
+export interface HistoryEntry {
+  zone: string;
+  profit: number;
+}
