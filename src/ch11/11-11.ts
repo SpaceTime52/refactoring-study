@@ -1,6 +1,4 @@
-type Point = {
-  elevation: number;
-};
+import { Point } from './chapter-11.types';
 
 export function ascentVelocity(points: Point[], totalMinutes: number): number {
   function calculateAscent(): void {

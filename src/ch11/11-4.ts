@@ -1,11 +1,4 @@
-interface Room {
-  daysTempRange: TempRange;
-}
-
-interface TempRange {
-  low: number;
-  high: number;
-}
+import { Room, TempRange } from './chapter-11.interfaces';
 
 export function temperatureAlerts(room: Room, plan: HeatingPlan): string[] {
   const alerts: string[] = [];
@@ -26,6 +19,8 @@ export class HeatingPlan {
   }
 
   withinRange(bottom: number, top: number): boolean {
-    return bottom >= this._temperatureRange.low && top <= this._temperatureRange.high;
+    return (
+      bottom >= this._temperatureRange.low && top <= this._temperatureRange.high
+    );
   }
 }

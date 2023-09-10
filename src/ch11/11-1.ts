@@ -1,16 +1,13 @@
+import { Customer } from './chapter-11.interfaces';
+
 // 예제 1
-interface Invoice {
-  amount: number;
-}
-
-interface Customer {
-  invoices: Invoice[];
-}
-
 declare const customer: Customer; // Declaration, replace with your actual customer data or logic
 
 function totalOutstandingAndSendBill(): number {
-  const result = customer.invoices.reduce((total, each) => each.amount + total, 0);
+  const result = customer.invoices.reduce(
+    (total, each) => each.amount + total,
+    0,
+  );
   sendBill();
   return result;
 }

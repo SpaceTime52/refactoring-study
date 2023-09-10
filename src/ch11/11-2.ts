@@ -1,9 +1,6 @@
+import { Person, CurrencyValue } from './chapter-11.interfaces';
+
 // 예제 1
-interface Person {
-  salary: {
-    multiply: (factor: number) => void;
-  };
-}
 
 function tenPercentRaise(person: Person): void {
   person.salary.multiply(1.1);
@@ -14,15 +11,11 @@ function fivePercentRaise(person: Person): void {
 }
 
 // 예제 2
-interface CurrencyValue {
-  currency: string;
-  currencyName: string;
-  value: number;
-}
 
 export function baseCharge(usage: number): CurrencyValue {
   if (usage < 0) return usd(0);
-  const amount = bottomBand(usage) * 0.03 + middleBand(usage) * 0.05 + topBand(usage) * 0.07;
+  const amount =
+    bottomBand(usage) * 0.03 + middleBand(usage) * 0.05 + topBand(usage) * 0.07;
   return usd(amount);
 }
 

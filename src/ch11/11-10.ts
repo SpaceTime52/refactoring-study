@@ -1,10 +1,4 @@
-type Customer = {
-  baseRate: number;
-};
-
-type Provider = {
-  connectionCharge: number;
-};
+import { Provider, Customer } from './chapter-11.types';
 
 export class ChargeCalculator {
   private _customer: Customer;

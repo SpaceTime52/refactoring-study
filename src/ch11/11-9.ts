@@ -1,12 +1,10 @@
-type Candidate = {
-  originState: number;
-};
+import { Candidate, MedicalExam } from './chapter-11.types';
 
-type MedicalExam = {
-  isSmoker: boolean;
-};
-
-export function score(candidate: Candidate, medicalExam: MedicalExam, scoringGuide: ScoringGuide): number {
+export function score(
+  candidate: Candidate,
+  medicalExam: MedicalExam,
+  scoringGuide: ScoringGuide,
+): number {
   let result = 0;
   let healthLevel = 0;
   let highMedicalRiskFlag = false;
