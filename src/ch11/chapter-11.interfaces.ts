@@ -39,3 +39,9 @@ export interface Thermostat {
   currentTemperature: number;
   // Other properties and methods if there are any
 }
+
+export class ShippingRules {
+  constructor(data: any) {
+    // Implementation...
+  }
+}
