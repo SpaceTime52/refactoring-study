@@ -1,4 +1,4 @@
-// Chapter 11-2. 함수 매개변수화하기
+// Chapter 11-2. 함수 매개변수화하기 (다른 부분만 매개변수화해서, 함수를 하나로 해본다.)
 import { Person, CurrencyValue } from './chapter-11.interfaces';
 
 // 예제 1
