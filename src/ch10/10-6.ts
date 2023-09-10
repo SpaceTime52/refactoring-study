@@ -1,4 +1,6 @@
-class Customer {
+import { strict as assert } from 'node:assert';
+
+class CustomerService {
   discountRate: number;
 
   constructor() {
@@ -6,6 +8,7 @@ class Customer {
   }
 
   applyDiscount(number: number): number {
+    assert(number >= 0);
     return this.discountRate ? number - this.discountRate * number : number;
   }
 }
