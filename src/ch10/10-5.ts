@@ -1,49 +1,53 @@
 export class Site {
-  private _customer: Customer | string;
-
-  constructor(customer: Customer | string) {
-    this._customer = customer;
+  #customer: Customer;
+  constructor(customerName: string = 'unknown') {
+    this.#customer =
+      customerName === 'unknown'
+        ? new UnknownCustomer()
+        : new Customer(customerName);
   }
 
-  get customer(): Customer | string {
-    return this._customer;
+  get customer(): Customer {
+    return this.#customer;
   }
 }
 
 export class Customer {
-  private _name: string;
+  #name: string;
 
-  constructor(name: string) {
-    this._name = name;
+  constructor(name: string = 'unknown') {
+    this.#name = name;
   }
 
   get name(): string {
-    return this._name;
+    return this.#name;
   }
 
   get billingPlan(): any {
-    // Define the type for the billingPlan
-    // Implementation
+    return null;
   }
 
-  set billingPlan(arg: any) {
-    // Define the type for arg
-    // Implementation
-  }
+  set billingPlan(arg: any) {}
 
   get paymentHistory(): any {
-    // Define the type for the paymentHistory
-    // Implementation
+    return null;
   }
 }
 
-// Using the classes
-export function customerName(site: Site): string {
-  const aCustomer = site.customer;
-  // More code may be here
-  let customerName;
-  if (aCustomer === 'unknown') customerName = 'occupant';
-  else if (typeof aCustomer !== 'string') customerName = aCustomer.name;
+export class UnknownCustomer extends Customer {
+  get name(): string {
+    return 'occupant';
+  }
+}
 
-  return customerName;
+export function customerName(site: Site): string {
+  return site.customer.name;
+}
+
+export function printFive(): void {
+  const firstSite = new Site('Kim');
+  const secondSite = new Site();
+
+  console.log(customerName(firstSite));
+  console.log(customerName(secondSite));
 }
