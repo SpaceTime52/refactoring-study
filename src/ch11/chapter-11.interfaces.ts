@@ -1,3 +1,7 @@
+export interface Alarm {
+  setOff(message: string): void;
+}
+
 export interface Invoice {
   amount: number;
 }

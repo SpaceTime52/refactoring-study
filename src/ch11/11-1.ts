@@ -1,15 +1,14 @@
 // ch11-1. 질의 함수와 변경 함수 분리하기
-import { Customer } from './chapter-11.interfaces';
+import { Alarm, Customer } from './chapter-11.interfaces';
 
-// 예제 1
+// 예제 1 : 함수 하나당 하나만 사용하는 것이 좋다.
 declare const customer: Customer;
 
-function getTotalOutstandingAndSendBill(): number {
+function getTotalOutstanding(): number {
   const result = customer.invoices.reduce(
     (total, each) => each.amount + total,
     0,
   );
-  sendBill();
   return result;
 }
 
@@ -18,18 +17,18 @@ function sendBill(): void {
 }
 
 // 예제 2
-interface Alarm {
-  setOff(message: string): void;
+export function alertForMiscreant(people: string[], alarm: Alarm): string {
+  const miscreant = findMiscreant(people);
+  setOffAlarms(alarm, miscreant);
+  return miscreant;
 }
 
-export function alertForMiscreant(people: string[], alarm: Alarm): string {
+function findMiscreant(people: string[]): string {
   for (const p of people) {
     if (p === 'Don') {
-      setOffAlarms(alarm, p);
       return 'Don';
     }
     if (p === 'John') {
-      setOffAlarms(alarm, p);
       return 'John';
     }
   }
