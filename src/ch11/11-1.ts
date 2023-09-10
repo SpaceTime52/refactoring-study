@@ -1,9 +1,10 @@
+// ch11-1. 질의 함수와 변경 함수 분리하기
 import { Customer } from './chapter-11.interfaces';
 
 // 예제 1
-declare const customer: Customer; // Declaration, replace with your actual customer data or logic
+declare const customer: Customer;
 
-function totalOutstandingAndSendBill(): number {
+function getTotalOutstandingAndSendBill(): number {
   const result = customer.invoices.reduce(
     (total, each) => each.amount + total,
     0,
