@@ -1,27 +1,11 @@
-type Customer = {
-  baseRate: number;
-};
+// Chapter 11-10. 명령을 함수로 바꾸기 (데이터에 대해 계산만 하면 되는 거면, 메모리 절약)
+import { Provider, Customer } from './chapter-11.types';
 
-type Provider = {
-  connectionCharge: number;
-};
-
-export class ChargeCalculator {
-  private _customer: Customer;
-  private _usage: number;
-  private _provider: Provider;
-
-  constructor(customer: Customer, usage: number, provider: Provider) {
-    this._customer = customer;
-    this._usage = usage;
-    this._provider = provider;
-  }
-
-  get baseCharge(): number {
-    return this._customer.baseRate * this._usage;
-  }
-
-  get charge(): number {
-    return this.baseCharge + this._provider.connectionCharge;
-  }
+export function charge(
+  customer: Customer,
+  usage: number,
+  provider: Provider,
+): number {
+  const baseCharge = customer.baseRate * usage;
+  return baseCharge + provider.connectionCharge;
 }

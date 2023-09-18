@@ -1,15 +1,5 @@
-const values: (number | string)[] = []; // You can adjust the type based on the kind of values you expect to have.
-
-function getValueForPeriod(periodNumber: number): number | string {
-  const value = values[periodNumber];
-  if (!value) {
-    throw new Error('value is undefined');
-  }
-  return value;
-}
-
-try {
-  getValueForPeriod(-10);
-} catch (error) {
-  console.log('에러 발생!');
+// Chapter 11-13. 예외를 사전확인으로 바꾸기 (예상하는 실패케이스이면 예외를 던지는 대신에 미리 디폴트 지정하는 등의 사전확인)
+const values: (number | string)[] = [];
+function getValueForPeriod(index: number): number | string {
+  return index < 0 || index > values.length ? 0 : values[index];
 }

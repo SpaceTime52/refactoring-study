@@ -1,11 +1,12 @@
-class Person {
-  private _name: string;
+// Chapter 11-7.  세터 제거하기
+class Persona {
+  #name: string;
 
-  get name(): string {
-    return this._name;
+  constructor(name: string) {
+    this.#name = name;
   }
 
-  set name(value: string) {
-    this._name = value;
+  get name(): string {
+    return this.#name;
   }
 }

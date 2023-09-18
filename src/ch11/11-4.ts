@@ -1,17 +1,9 @@
-interface Room {
-  daysTempRange: TempRange;
-}
-
-interface TempRange {
-  low: number;
-  high: number;
-}
+// Chapter 11-4 객체 통째로 넘기기
+import { Room, TempRange } from './chapter-11.interfaces';
 
 export function temperatureAlerts(room: Room, plan: HeatingPlan): string[] {
   const alerts: string[] = [];
-  const low = room.daysTempRange.low;
-  const high = room.daysTempRange.high;
-  if (!plan.withinRange(low, high)) {
+  if (!plan.withinRange(room.daysTempRange)) {
     alerts.push('room temperature went outside range');
   }
 
@@ -19,13 +11,16 @@ export function temperatureAlerts(room: Room, plan: HeatingPlan): string[] {
 }
 
 export class HeatingPlan {
-  private _temperatureRange: TempRange;
+  #temperatureRange: TempRange;
 
   constructor(temperatureRange: TempRange) {
-    this._temperatureRange = temperatureRange;
+    this.#temperatureRange = temperatureRange;
   }
 
-  withinRange(bottom: number, top: number): boolean {
-    return bottom >= this._temperatureRange.low && top <= this._temperatureRange.high;
+  withinRange(tempRange: TempRange): boolean {
+    return (
+      tempRange.low >= this.#temperatureRange.low &&
+      tempRange.high <= this.#temperatureRange.high
+    );
   }
 }

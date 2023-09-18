@@ -1,41 +1,24 @@
+// Chapter 11-2. 함수 매개변수화하기 (다른 부분만 매개변수화해서, 함수를 하나로 해본다.)
+import { Person, CurrencyValue } from './chapter-11.interfaces';
+
 // 예제 1
-interface Person {
-  salary: {
-    multiply: (factor: number) => void;
-  };
-}
-
-function tenPercentRaise(person: Person): void {
-  person.salary.multiply(1.1);
-}
-
-function fivePercentRaise(person: Person): void {
-  person.salary.multiply(1.05);
+function raiseSalary(person: Person, factorRatio: number): void {
+  person.salary.multiply(1 + factorRatio);
 }
 
 // 예제 2
-interface CurrencyValue {
-  currency: string;
-  currencyName: string;
-  value: number;
-}
 
 export function baseCharge(usage: number): CurrencyValue {
   if (usage < 0) return usd(0);
-  const amount = bottomBand(usage) * 0.03 + middleBand(usage) * 0.05 + topBand(usage) * 0.07;
+  const amount =
+    withinBand(usage, 0, 100) * 0.03 +
+    withinBand(usage, 100, 200) * 0.05 +
+    withinBand(usage, 200, Infinity) * 0.07;
   return usd(amount);
 }
 
-function bottomBand(usage: number): number {
-  return Math.min(usage, 100);
-}
-
-function middleBand(usage: number): number {
-  return usage > 100 ? Math.min(usage, 200) - 100 : 0;
-}
-
-function topBand(usage: number): number {
-  return usage > 200 ? usage - 200 : 0;
+function withinBand(usage: number, bottom: number, top: number): number {
+  return usage > bottom ? Math.min(usage, top) - bottom : 0;
 }
 
 function usd(value: number): CurrencyValue {
