@@ -1,7 +1,8 @@
-abstract class Employee {
-  get quota(): any;
-}
+// 12-4 메서드 내리기
+class Employee {}
 
 class Engineer extends Employee {}
 
-class Salesperson extends Employee {}
+class Salesperson extends Employee {
+  get quota(): any;
+}
