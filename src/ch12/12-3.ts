@@ -1,8 +1,6 @@
-// Base class
-class Party {}
+class Party2 {}
 
-// Derived class: Employee
-class Employee extends Party {
+class Employee2 extends Party2 {
   private _name: string;
   private _id: number;
   private _monthlyCost: number;
@@ -14,7 +12,6 @@ class Employee extends Party {
     this._monthlyCost = monthlyCost;
   }
 
-  // Optional: getters for private properties
   get name(): string {
     return this._name;
   }
@@ -28,26 +25,24 @@ class Employee extends Party {
   }
 }
 
-// Derived class: Department
-class Department extends Party {
+class Department2 extends Party2 {
   private _name: string;
-  private _staff: Employee; // assuming staff is of type Employee for this example
+  private _staff: Employee2;
 
-  constructor(name: string, staff: Employee) {
+  constructor(name: string, staff: Employee2) {
     super();
     this._name = name;
     this._staff = staff;
   }
 
-  // Optional: getters for private properties
   get name(): string {
     return this._name;
   }
 
-  get staff(): Employee {
+  get staff(): Employee2 {
     return this._staff;
   }
 }
 
-const bohyeon = new Employee('보현', 123, 13);
-const department = new Department('개발부서', bohyeon);
+const bohyeon2: Employee2 = new Employee2('보현', 123, 13);
+const department: Department2 = new Department2('개발부서', bohyeon2);
