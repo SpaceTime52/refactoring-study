@@ -1,30 +1,26 @@
 // Base class
 class Employee {}
 
-// Derived class: Salesperson
 class Salesperson extends Employee {
-  private _name: string;
+  #name: string;
 
-  // Optional: If you want getters and setters for the private variable
   get name(): string {
-    return this._name;
+    return this.#name;
   }
 
   set name(value: string) {
-    this._name = value;
+    this.#name = value;
   }
 }
 
-// Derived class: Engineer
 class Engineer extends Employee {
-  private _name: string;
+  #name: string;
 
-  // Optional: If you want getters and setters for the private variable
   get name(): string {
-    return this._name;
+    return this.#name;
   }
 
   set name(value: string) {
-    this._name = value;
+    this.#name = value;
   }
 }
