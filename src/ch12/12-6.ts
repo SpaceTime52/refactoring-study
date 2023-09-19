@@ -1,4 +1,4 @@
-class Employee {
+class EmployeeCh12 {
   #name: string;
   #type: string;
 
@@ -23,5 +23,5 @@ class Employee {
   }
 }
 
-const bohyeon = new Employee('보현', 'engineer');
-const bob = new Employee('밥', 'manager');
+const bohyeon = new EmployeeCh12('보현', 'engineer');
+const bob = new EmployeeCh12('밥', 'manager');
