@@ -1,39 +1,22 @@
 // 예시 1
 abstract class Employee {
-  abstract get name(): string;
-}
-
-class Salesperson extends Employee {
   get name(): string {
-    // Implementation (or data retrieval) would go here.
-    return ''; // Placeholder value
+    return '';
   }
 }
 
-class Engineer extends Employee {
-  get name(): string {
-    // Implementation (or data retrieval) would go here.
-    return ''; // Placeholder value
-  }
-}
+class Salesperson extends Employee {}
+
+class Engineer extends Employee {}
 
 // 예시 2
 abstract class Party {
-  abstract monthlyCost: number;
-}
-
-class Department extends Party {
-  monthlyCost: number = 0; // Placeholder value
-
-  get totalAnnualCost(): number {
-    return this.monthlyCost * 12;
-  }
-}
-
-class Employee extends Party {
-  monthlyCost: number = 0; // Placeholder value
-
+  monthlyCost: number = 0; // 월간 비용예시
   get annualCost(): number {
     return this.monthlyCost * 12;
   }
 }
+
+class Department extends Party {}
+
+class Employee extends Party {}
