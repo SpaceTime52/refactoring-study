@@ -1,27 +1,45 @@
-class EmployeeCh12 {
+abstract class EmployeeCh12 {
   #name: string;
-  #type: string;
 
-  constructor(name: string, type: string) {
-    this.validateType(type);
+  constructor(name: string) {
     this.#name = name;
-    this.#type = type;
   }
 
-  private validateType(arg: string): void {
-    if (!['engineer', 'manager', 'salesperson'].includes(arg)) {
-      throw new Error(`${arg}라는 직원 유형은 없습니다.`);
-    }
-  }
-
-  get type(): string {
-    return this.#type;
-  }
+  abstract get type(): string;
 
   toString(): string {
     return `${this.#name} (${this.type})`;
   }
 }
 
-const bohyeon = new EmployeeCh12('보현', 'engineer');
-const bob = new EmployeeCh12('밥', 'manager');
+class EngineerCh12 extends EmployeeCh12 {
+  constructor(name: string) {
+    super(name);
+  }
+
+  get type(): string {
+    return 'engineer';
+  }
+}
+
+class SalespersonCh12 extends EmployeeCh12 {
+  constructor(name: string) {
+    super(name);
+  }
+
+  get type(): string {
+    return 'salesperson';
+  }
+}
+class ManagerCh12 extends EmployeeCh12 {
+  constructor(name: string) {
+    super(name);
+  }
+
+  get type(): string {
+    return 'manager';
+  }
+}
+
+const bohyeon = new EngineerCh12('보현');
+const bob = new ManagerCh12('밥');
