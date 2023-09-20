@@ -1,37 +1,40 @@
 class CatalogItem {
-  private _id: string;
-  private _title: string;
-  private _tags: string[];
+  #id: string;
+  #title: string;
+  #tags: string[];
 
   constructor(id: string, title: string, tags: string[]) {
-    this._id = id;
-    this._title = title;
-    this._tags = tags;
+    this.#id = id;
+    this.#title = title;
+    this.#tags = tags;
   }
 
   get id(): string {
-    return this._id;
+    return this.#id;
   }
 
   get title(): string {
-    return this._title;
+    return this.#title;
   }
 
   hasTag(arg: string): boolean {
-    return this._tags.includes(arg);
+    return this.#tags.includes(arg);
   }
 }
 
-class Scroll extends CatalogItem {
-  private _lastCleaned: Date;
+class Scroll {
+  #id: string;
+  #catalog: CatalogItem;
+  #lastCleaned: Date;
 
-  constructor(id: string, title: string, tags: string[], dataLastCleaned: Date) {
-    super(id, title, tags);
-    this._lastCleaned = dataLastCleaned;
+  constructor(id: string, dataLastCleaned: Date, catalog: CatalogItem) {
+    this.#id = id;
+    this.#catalog = catalog;
+    this.#lastCleaned = dataLastCleaned;
   }
 
   needsCleaning(targetDate: Date): boolean {
-    const threshold = this.hasTag('revered') ? 700 : 1500;
+    const threshold = this.#catalog.hasTag('revered') ? 700 : 1500;
 
     return this.daysSinceLastCleaning(targetDate) > threshold;
   }
@@ -39,8 +42,6 @@ class Scroll extends CatalogItem {
   daysSinceLastCleaning(targetDate: Date): number {
     // Assuming ChronoUnit.DAYS.until() calculates the difference in days between two dates.
     // This might be different based on your actual implementation of ChronoUnit.
-    return this._lastCleaned.until(targetDate, ChronoUnit.DAYS);
+    return this.#lastCleaned.until(targetDate, ChronoUnit.DAYS);
   }
 }
-
-// You would also need to define or import ChronoUnit depending on its origin.
