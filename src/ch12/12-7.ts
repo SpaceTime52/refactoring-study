@@ -3,7 +3,7 @@ type PersonData = {
   gender: 'M' | 'F' | 'X';
 };
 
-class Person {
+class PersonCh12 {
   #name: string;
 
   constructor(name: string) {
@@ -19,20 +19,20 @@ class Person {
   }
 }
 
-class Male extends Person {
+class Male extends PersonCh12 {
   get genderCode(): string {
     return 'M';
   }
 }
 
-class Female extends Person {
+class Female extends PersonCh12 {
   get genderCode(): string {
     return 'F';
   }
 }
 
-function loadFromInput(data: PersonData[]): Person[] {
-  const result: Person[] = [];
+function loadFromInput(data: PersonData[]): PersonCh12[] {
+  const result: PersonCh12[] = [];
   data.forEach((record) => {
     let person;
     switch (record.gender) {
@@ -43,17 +43,22 @@ function loadFromInput(data: PersonData[]): Person[] {
         person = new Female(record.name);
         break;
       default:
-        person = new Person(record.name);
+        person = new PersonCh12(record.name);
     }
     result.push(person);
   });
   return result;
 }
 
-const people = loadFromInput([
+const peopleCh12: PersonCh12[] = loadFromInput([
   { name: '길동', gender: 'M' },
   { name: '철수', gender: 'M' },
   { name: '밥', gender: 'M' },
 ]);
-const numberOfMales = people.filter((p) => p instanceof Male).length;
-console.log(numberOfMales);
+const numberOfMales = peopleCh12.filter(
+  (person: PersonCh12) => person instanceof Male,
+).length;
+
+export function callTwelveDashSeven() {
+  console.log(numberOfMales);
+}
