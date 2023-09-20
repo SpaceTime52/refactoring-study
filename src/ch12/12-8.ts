@@ -1,33 +1,27 @@
-class Department {
+class DepartmentCh12 {
   get totalAnnualCost(): number {
-    // Implement the logic here and return a number.
-    return 0; // Placeholder return.
+    return 0;
   }
 
   get name(): string {
-    // Implement the logic here and return a string.
-    return ''; // Placeholder return.
+    return '';
   }
 
   get headCount(): number {
-    // Implement the logic here and return a number.
-    return 0; // Placeholder return.
+    return 0;
   }
 }
 
-class Employee {
+class EmployeeChapter12 {
   get annualCost(): number {
-    // Implement the logic here and return a number.
-    return 0; // Placeholder return.
+    return 0;
   }
 
   get name(): string {
-    // Implement the logic here and return a string.
-    return ''; // Placeholder return.
+    return '';
   }
 
   get id(): number {
-    // Implement the logic here and return a number.
-    return 0; // Placeholder return.
+    return 0;
   }
 }
