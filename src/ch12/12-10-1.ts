@@ -9,20 +9,26 @@ interface Extras {
 }
 
 class Booking {
-  private _show: Show;
-  private _date: Date; // Assuming date is a JavaScript Date object
+  #show: Show;
+  #date: Date;
+  #premiumDelegate: PremiumBookingDelegate;
 
   constructor(show: Show, date: Date) {
-    this._show = show;
-    this._date = date;
+    this.#show = show;
+    this.#date = date;
+    this.#premiumDelegate = new PremiumBookingDelegate(this, extras);
   }
 
   get hasTalkback(): boolean {
-    return this._show.hasOwnProperty('talkback') && !this.isPeakDay;
+    return this.#show.hasOwnProperty('talkback') && !this.isPeakDay;
+  }
+
+  get show(): Show {
+    return this.#show;
   }
 
   get basePrice(): number {
-    let result = this._show.price;
+    let result = this.#show.price;
 
     if (this.isPeakDay) {
       result += Math.round(result * 0.15);
@@ -31,38 +37,52 @@ class Booking {
     return result;
   }
 
-  // Assuming you might have a property isPeakDay, I'll add a placeholder for it
   get isPeakDay(): boolean {
-    // Placeholder implementation, replace with actual logic
     return false;
+  }
+
+  static createBooking(show: Show, date: Date): Booking {
+    return new Booking(show, date);
+  }
+
+  static createPremiumBooking(show: Show, date: Date, extras: Extras): Booking {
+    const result: Booking = new Booking(show, date);
+    result.#bePremium(extras);
+    return result;
+  }
+
+  #bePremium(extras: Extras): void {
+    this.#premiumDelegate = new PremiumBookingDelegate(this, extras);
   }
 }
 
-class PremiumBooking extends Booking {
-  private _extras: Extras;
+interface BookingDelegate {}
 
-  constructor(show: Show, date: Date, extras: Extras) {
-    super(show, date);
-    this._extras = extras;
+class PremiumBookingDelegate implements BookingDelegate {
+  #host: Booking;
+  #extras: Extras;
+
+  constructor(private hostBooking: Booking, extras: Extras) {
+    this.#host = hostBooking;
+    this.#extras = extras;
   }
 
   get hasTalkback(): boolean {
-    return this._show.hasOwnProperty('talkback');
+    return this.#host.show.hasOwnProperty('talkback');
   }
 
   get basePrice(): number {
-    return Math.round(super.basePrice + this._extras.PremiumFee);
+    return Math.round(this.#host.basePrice + this.#extras.PremiumFee);
   }
 
   get hasDinner(): boolean {
-    return this._extras.hasOwnProperty('dinner') && !this.isPeakDay;
+    return this.#extras.hasOwnProperty('dinner') && !this.#host.isPeakDay;
   }
 }
 
-// Assuming a placeholder for show, date, and extras
 const show: Show = { price: 100 };
 const date: Date = new Date();
 const extras: Extras = { PremiumFee: 50 };
 
-const booking = new Booking(show, date);
-const premiumBooking = new PremiumBooking(show, date, extras);
+const booking = Booking.createBooking(show, date);
+const premiumBooking = Booking.createPremiumBooking(show, date, extras);
