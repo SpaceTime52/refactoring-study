@@ -1,3 +1,4 @@
+// 12.9 계층 합치기
 class Employee {}
 
-class Salesperson extends Employee {}
+// 개별적인 서브클래스로 존재할 이유가 없을 때는 계층을 합쳐야 한다. 너무 미래지향적으로 나눠두는 것보다 필요할 때 파생시키는 것이 좋다.
