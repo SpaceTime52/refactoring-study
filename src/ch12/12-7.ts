@@ -5,9 +5,11 @@ type PersonData = {
 
 class PersonCh12 {
   #name: string;
+  #genderCode: string;
 
-  constructor(name: string) {
+  constructor(name: string, genderCode: string) {
     this.#name = name;
+    this.#genderCode = genderCode;
   }
 
   get name(): string {
@@ -15,37 +17,31 @@ class PersonCh12 {
   }
 
   get genderCode(): string {
-    return 'X';
+    return this.#genderCode;
   }
-}
 
-class Male extends PersonCh12 {
-  get genderCode(): string {
-    return 'M';
+  get isMale(): boolean {
+    return this.#genderCode === 'M';
   }
-}
 
-class Female extends PersonCh12 {
-  get genderCode(): string {
-    return 'F';
+  static create(record: PersonData): PersonCh12 {
+    switch (record.gender) {
+      case 'M':
+        return new PersonCh12(record.name, 'M');
+        break;
+      case 'F':
+        return new PersonCh12(record.name, 'F');
+        break;
+      default:
+        return new PersonCh12(record.name, 'X');
+    }
   }
 }
 
 function loadFromInput(data: PersonData[]): PersonCh12[] {
   const result: PersonCh12[] = [];
   data.forEach((record) => {
-    let person;
-    switch (record.gender) {
-      case 'M':
-        person = new Male(record.name);
-        break;
-      case 'F':
-        person = new Female(record.name);
-        break;
-      default:
-        person = new PersonCh12(record.name);
-    }
-    result.push(person);
+    result.push(PersonCh12.create(record));
   });
   return result;
 }
@@ -56,9 +52,5 @@ const peopleCh12: PersonCh12[] = loadFromInput([
   { name: '밥', gender: 'M' },
 ]);
 const numberOfMales = peopleCh12.filter(
-  (person: PersonCh12) => person instanceof Male,
+  (person: PersonCh12) => person.isMale,
 ).length;
-
-export function callTwelveDashSeven() {
-  console.log(numberOfMales);
-}
